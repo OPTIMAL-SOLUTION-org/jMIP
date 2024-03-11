@@ -1,176 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.optsol.jmip</groupId>
-    <artifactId>jmip-parent</artifactId>
-    <version>1.1.0</version>
-    <packaging>pom</packaging>
+  <groupId>org.optsol.jmip</groupId>
+  <artifactId>jmip-parent</artifactId>
+  <version>1.1.0</version>
+  <packaging>pom</packaging>
 
-    <name>jMIP</name>
-    <description>Mixed Integer Programming Java API for Operations Research (OR) software</description>
-    <url>https://github.com/OPTIMAL-SOLUTION-org</url>
+  <name>jMIP</name>
+  <description>Mixed Integer Programming Java API for Operations Research (OR) software
+  </description>
+  <url>https://github.com/OPTIMAL-SOLUTION-org</url>
 
-    <licenses>
-        <license>
-            <name>The Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
 
-    <developers>
-        <developer>
-            <name>Philipp Fath</name>
-            <email>philipp.fath@optimal-solution.org</email>
-            <organization>OPTIMAL SOLUTION</organization>
-            <organizationUrl>https://www.optimal-solution.org</organizationUrl>
-        </developer>
-        <developer>
-            <name>David Sayah</name>
-            <email>david.sayah@optimal-solution.org</email>
-            <organization>OPTIMAL SOLUTION</organization>
-            <organizationUrl>https://www.optimal-solution.org</organizationUrl>
-        </developer>
-    </developers>
+  <developers>
+    <developer>
+      <name>Philipp Fath</name>
+      <email>philipp.fath@optimal-solution.org</email>
+      <organization>OPTIMAL SOLUTION</organization>
+      <organizationUrl>https://www.optimal-solution.org</organizationUrl>
+    </developer>
+    <developer>
+      <name>David Sayah</name>
+      <email>david.sayah@optimal-solution.org</email>
+      <organization>OPTIMAL SOLUTION</organization>
+      <organizationUrl>https://www.optimal-solution.org</organizationUrl>
+    </developer>
+  </developers>
 
-    <scm>
-        <connection>scm:git:git://github.com/OPTIMAL-SOLUTION-org/jMIP.git</connection>
-        <developerConnection>scm:git:ssh://github.com/OPTIMAL-SOLUTION-org/jMIP.git</developerConnection>
-        <url>https://github.com/OPTIMAL-SOLUTION-org/jMIP/tree/master</url>
-    </scm>
+  <scm>
+    <connection>scm:git:git://github.com/OPTIMAL-SOLUTION-org/jMIP.git</connection>
+    <developerConnection>scm:git:ssh://github.com/OPTIMAL-SOLUTION-org/jMIP.git
+    </developerConnection>
+    <url>https://github.com/OPTIMAL-SOLUTION-org/jMIP/tree/master</url>
+  </scm>
 
-    <properties>
-        <source-encoding>UTF-8</source-encoding>
-        <output-encoding>UTF-8</output-encoding>
+  <properties>
+    <source-encoding>UTF-8</source-encoding>
+    <output-encoding>UTF-8</output-encoding>
 
-        <project.build.sourceEncoding>${source-encoding}</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${output-encoding}</project.reporting.outputEncoding>
+    <project.build.sourceEncoding>${source-encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${output-encoding}</project.reporting.outputEncoding>
 
-        <java.version>11</java.version>
+    <java.version>11</java.version>
 
-        <ortools-version>9.9.3963</ortools-version>
-        <jackson-version>2.16.0</jackson-version>
-        <lombok-version>1.18.30</lombok-version>
-        <opencsv-version>5.9</opencsv-version>
-        <slf4j-version>2.0.9</slf4j-version>
-    </properties>
+    <ortools-version>9.9.3963</ortools-version>
+    <jackson-version>2.16.2</jackson-version>
+    <lombok-version>1.18.30</lombok-version>
+    <opencsv-version>5.9</opencsv-version>
+    <slf4j-version>2.0.12</slf4j-version>
+  </properties>
 
-    <modules>
-        <module>jmip-core</module>
-        <module>jmip-ortools</module>
-        <module>jmip-utils</module>
-    </modules>
+  <modules>
+    <module>jmip-core</module>
+    <module>jmip-ortools</module>
+    <module>jmip-utils</module>
+  </modules>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.google.ortools</groupId>
-                <artifactId>ortools-java</artifactId>
-                <version>${ortools-version}</version>
-            </dependency>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.google.ortools</groupId>
+        <artifactId>ortools-java</artifactId>
+        <version>${ortools-version}</version>
+      </dependency>
 
-            <dependency>
-                <groupId>com.fasterxml.jackson</groupId>
-                <artifactId>jackson-bom</artifactId>
-                <version>${jackson-version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>${jackson-version}</version>
+      </dependency>
 
-            <dependency>
-                <groupId>com.opencsv</groupId>
-                <artifactId>opencsv</artifactId>
-                <version>${opencsv-version}</version>
-            </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson-version}</version>
+      </dependency>
 
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j-version}</version>
-            </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+        <version>${jackson-version}</version>
+      </dependency>
 
-            <!--PROVIDED DEPENDENCIES-->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok-version}</version>
-                <scope>provided</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+      <dependency>
+        <groupId>com.opencsv</groupId>
+        <artifactId>opencsv</artifactId>
+        <version>${opencsv-version}</version>
+      </dependency>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-                <configuration>
-                    <target>${java.version}</target>
-                    <source>${java.version}</source>
-                </configuration>
-            </plugin>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j-version}</version>
+      </dependency>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+      <!--PROVIDED DEPENDENCIES-->
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok-version}</version>
+        <scope>provided</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.5.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.12.1</version>
+        <configuration>
+          <target>${java.version}</target>
+          <source>${java.version}</source>
+        </configuration>
+      </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.3.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <publishingServerId>central</publishingServerId>
-                    <tokenAuth>true</tokenAuth>
-                    <ignorePublishedComponents>true</ignorePublishedComponents>
-                    <waitUntil>uploaded</waitUntil>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.6.3</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>0.3.1</version>
+        <extensions>true</extensions>
+        <configuration>
+          <publishingServerId>central</publishingServerId>
+          <tokenAuth>true</tokenAuth>
+          <ignorePublishedComponents>true</ignorePublishedComponents>
+          <waitUntil>uploaded</waitUntil>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
