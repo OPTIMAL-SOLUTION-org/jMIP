@@ -51,7 +51,7 @@
 
         <java.version>11</java.version>
 
-        <ortools-version>9.8.3296</ortools-version>
+        <ortools-version>9.9.3963</ortools-version>
         <jackson-version>2.16.0</jackson-version>
         <lombok-version>1.18.30</lombok-version>
         <opencsv-version>5.9</opencsv-version>
