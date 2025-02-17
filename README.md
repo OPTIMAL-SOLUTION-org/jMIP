@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.optsol.jmip</groupId>
             <artifactId>jmip-parent</artifactId>
-            <version>1.2.0</version>
+            <version>1.4.0</version>
         </dependency>
     </dependencies>
 ```
