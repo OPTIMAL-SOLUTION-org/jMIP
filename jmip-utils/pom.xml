@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.optsol.jmip</groupId>
         <artifactId>jmip-parent</artifactId>
-        <version>1.4.0</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>jmip-utils</artifactId>
@@ -37,11 +37,6 @@
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 
