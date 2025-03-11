@@ -10,9 +10,8 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>jmip-core</artifactId>
-
     <name>jMIP Core</name>
+    <artifactId>jmip-core</artifactId>
 
     <dependencies>
         <!-- jmip dependencies -->
