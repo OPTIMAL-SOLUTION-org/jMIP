@@ -7,34 +7,20 @@ import com.google.ortools.linearsolver.MPSolverParameters;
 import com.google.ortools.linearsolver.MPVariable;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import org.optsol.jmip.core.model.AbstractModel;
 import org.optsol.jmip.core.model.constants.IConstants;
-import org.optsol.jmip.core.model.constraints.IConstraint;
-import org.optsol.jmip.core.model.objective.IObjective;
-import org.optsol.jmip.core.model.variables.IVariable;
 import org.optsol.jmip.linearsolver.solver.solution.LinearSolutionStateMapper;
 import org.optsol.jmip.core.solver.solution.SolutionState;
 
-public final class LinearModel<CONSTANTS extends IConstants>
+public abstract class LinearModel<CONSTANTS extends IConstants>
     extends AbstractModel<MPSolver, MPVariable, CONSTANTS> {
+  static {
+    Loader.loadNativeLibraries();
+  }
 
   private MPSolver.ResultStatus resultStatus = MPSolver.ResultStatus.NOT_SOLVED;
   private MPSolutionResponse solutionResponse = null;
   private Duration solutionDuration = null;
-
-  public LinearModel(
-      MPSolver solver,
-      IVariable<? super CONSTANTS, MPSolver, MPVariable> variables,
-      IObjective<? super CONSTANTS, MPVariable, MPSolver> objective,
-      Collection<IConstraint<? super CONSTANTS, MPVariable, MPSolver>> constraints)
-      throws Exception {
-    super(
-        solver,
-        variables,
-        objective,
-        constraints);
-  }
 
   public boolean solve(MPSolverParameters solverParams) {
     resultStatus = MPSolver.ResultStatus.NOT_SOLVED;

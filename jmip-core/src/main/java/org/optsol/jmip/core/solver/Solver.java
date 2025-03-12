@@ -2,8 +2,8 @@ package org.optsol.jmip.core.solver;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
-import org.optsol.jmip.core.model.AbstractModel;
-import org.optsol.jmip.core.model.AbstractModelFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.optsol.jmip.core.model.IModel;
 import org.optsol.jmip.core.model.constants.IConstants;
 import org.optsol.jmip.core.solver.solution.GenericSolutionExtractor;
 import org.optsol.jmip.core.solver.solution.ISolution;
@@ -11,22 +11,22 @@ import org.optsol.jmip.core.solver.solution.ISolutionExtractor;
 
 @AllArgsConstructor
 @Setter
+@Slf4j
 public abstract class Solver<
     CONSTANTS extends IConstants,
     SOLVER,
     VARCLASS,
-    MODEL extends AbstractModel<SOLVER, VARCLASS, CONSTANTS>,
-    SOLUTION extends ISolution,
-    MODELFACTORY extends AbstractModelFactory<CONSTANTS, VARCLASS, SOLVER, MODEL>>
+    MODEL extends IModel<SOLVER, VARCLASS, CONSTANTS>,
+    SOLUTION extends ISolution>
     implements ISolver<CONSTANTS, SOLUTION> {
 
-  private final MODELFACTORY modelFactory;
+  private final Class<MODEL> modelClass;
   private final ISolutionExtractor<SOLUTION, MODEL> solutionExtractor;
 
   public Solver(
-      MODELFACTORY modelFactory,
+      Class<MODEL> modelClass,
       Class<SOLUTION> solutionInterface) {
-    this.modelFactory = modelFactory;
+    this.modelClass = modelClass;
     this.solutionExtractor =
         new GenericSolutionExtractor<>(solutionInterface);
   }
@@ -34,12 +34,19 @@ public abstract class Solver<
   @Override
   public final SOLUTION generateSolution(CONSTANTS constants) throws Exception {
 
-    MODEL model = modelFactory.buildModel(constants, generateSolverEngine());
+    log.info("Instantiating model: {} ", modelClass.getName());
+    MODEL model = modelClass.getConstructor().newInstance();
+
+    model.initModel(generateSolverEngine());
+    log.info("Building model: {} ", modelClass.getName());
+    model.buildOrUpdate(constants);
 
     model = modelManipulation(model);
 
+    log.info("Optimizing model: {} ", modelClass.getName());
     solve(model);
 
+    log.info("Extracting solution: {} ", modelClass.getName());
     return solutionExtractor.extractSolution(model);
   }
 

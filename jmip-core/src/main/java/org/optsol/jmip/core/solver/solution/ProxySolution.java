@@ -5,15 +5,15 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
-import org.optsol.jmip.core.model.AbstractModel;
+import org.optsol.jmip.core.model.IModel;
 import org.optsol.jmip.core.model.constants.IConstants;
 import org.optsol.jmip.core.model.constraints.IConstraint;
 
 public class ProxySolution<SOLVER, VARCLASS, CONSTANTS extends IConstants>
     implements InvocationHandler {
-  private final AbstractModel<SOLVER, VARCLASS, CONSTANTS> model;
+  private final IModel<SOLVER, VARCLASS, CONSTANTS> model;
 
-  public ProxySolution(AbstractModel<SOLVER, VARCLASS, CONSTANTS> model) {
+  public ProxySolution(IModel<SOLVER, VARCLASS, CONSTANTS> model) {
     this.model = model;
   }
 

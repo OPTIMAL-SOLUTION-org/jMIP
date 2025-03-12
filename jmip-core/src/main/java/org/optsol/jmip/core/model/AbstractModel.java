@@ -1,41 +1,39 @@
 package org.optsol.jmip.core.model;
 
-import java.time.Duration;
-import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import lombok.Getter;
 import org.optsol.jmip.core.model.constants.IConstants;
 import org.optsol.jmip.core.model.constraints.IConstraint;
 import org.optsol.jmip.core.model.objective.IObjective;
 import org.optsol.jmip.core.model.variables.IVariable;
-import org.optsol.jmip.core.solver.solution.SolutionState;
 
 @Getter
-public abstract class AbstractModel<SOLVER, VARCLASS, CONSTANTS extends IConstants> {
+public abstract class AbstractModel<SOLVER, VARCLASS, CONSTANTS extends IConstants>
+    implements IModel<SOLVER, VARCLASS, CONSTANTS> {
 
-  private final SOLVER solver;
-  private final IVariable<? super CONSTANTS, SOLVER, VARCLASS> variables;
-  private final IObjective<? super CONSTANTS, VARCLASS, SOLVER> objective;
-  private final Set<IConstraint<? super CONSTANTS, VARCLASS, SOLVER>> constraints = new HashSet<>();
+  private SOLVER solver;
+  private IVariable<? super CONSTANTS, SOLVER, VARCLASS> variables;
+  private IObjective<? super CONSTANTS, VARCLASS, SOLVER> objective;
+  private Set<IConstraint<? super CONSTANTS, VARCLASS, SOLVER>> constraints = new HashSet<>();
 
-  public AbstractModel(
-      SOLVER solver,
-      IVariable<? super CONSTANTS, SOLVER, VARCLASS> variables,
-      IObjective<? super CONSTANTS, VARCLASS, SOLVER> objective,
-      Collection<IConstraint<? super CONSTANTS, VARCLASS, SOLVER>> constraints)
-      throws Exception {
 
+  @Override
+  public void initModel(SOLVER solver) throws Exception {
     this.solver = solver;
 
-    this.variables = variables;
+    this.variables = generateVariables();
     this.variables.setSolver(solver);
 
-    this.objective = objective;
+    this.objective = generateObjective();
 
-    this.constraints.addAll(constraints);
+    this.constraints.addAll(generateConstraints());
+
+    //model.buildOrUpdate(constants);
   }
 
+  @Override
   public void buildOrUpdate(CONSTANTS constants) throws Exception {
     variables.updateVariables(constants);
 
@@ -46,11 +44,9 @@ public abstract class AbstractModel<SOLVER, VARCLASS, CONSTANTS extends IConstan
     }
   }
 
-  public abstract Double getObjectiveValue() throws Exception;
+  protected abstract IVariable<? super CONSTANTS, SOLVER, VARCLASS> generateVariables();
 
-  public abstract Double getBestObjectiveBound() throws Exception;
+  protected abstract IObjective<? super CONSTANTS, VARCLASS, SOLVER> generateObjective();
 
-  public abstract SolutionState getSolutionState() throws Exception;
-
-  public abstract Duration getSolutionTime() throws Exception;
+  protected abstract List<IConstraint<? super CONSTANTS, VARCLASS, SOLVER>> generateConstraints();
 }
