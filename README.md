@@ -19,13 +19,13 @@
     <dependencies>
         <dependency>
             <groupId>org.optsol.jmip</groupId>
-            <artifactId>jmip-parent</artifactId>
-            <version>1.4.0</version>
+            <artifactId>jmip-ortools-linearsolver</artifactId>
+            <version>2.0.0</version>
         </dependency>
     </dependencies>
 ```
 
 ### Get startet...
 
-We are working on providing detailed documentation, as well as a template project (_Need more :coffee:_). \
-In the meantime you can refer to [jdecor-pojo-template](https://github.com/OPTIMAL-SOLUTION-org/jdecor-pojo-template/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5144618.svg)](https://doi.org/10.5281/zenodo.5144618)
+We are working on providing detailed documentation (_Need more :coffee:_). \
+In the meantime you can refer to our template project [jmip-pojo-template](https://github.com/OPTIMAL-SOLUTION-org/jmip-pojo-template/)
