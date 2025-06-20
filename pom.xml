@@ -45,12 +45,12 @@
     </scm>
 
     <properties>
-        <revision>2.1.0</revision>
+        <revision>2.1.1</revision>
 
         <java.version>11</java.version>
 
-        <ortools-version>9.13.4784</ortools-version>
-        <jackson-version>2.19.0</jackson-version>
+        <ortools-version>9.14.6206</ortools-version>
+        <jackson-version>2.19.1</jackson-version>
         <junit-version>5.13.1</junit-version>
         <junit-platform-version>1.13.1</junit-platform-version>
         <lombok-version>1.18.38</lombok-version>
@@ -252,7 +252,7 @@
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.7.0</version>
+                <version>0.8.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
