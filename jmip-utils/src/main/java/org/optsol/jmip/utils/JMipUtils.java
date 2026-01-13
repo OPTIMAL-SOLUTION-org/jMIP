@@ -1,6 +1,5 @@
 package org.optsol.jmip.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import java.io.BufferedReader;
@@ -15,6 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.json.JsonMapper;
 
 public class JMipUtils {
 
@@ -33,20 +34,18 @@ public class JMipUtils {
       String resourceFilePathAndName,
       Class<CLASS> dataClazz) {
 
-    ObjectMapper mapper = generateObjectMapper();
+    JsonMapper mapper = generateJsonMapper();
     try {
       return mapper.readValue(
           getResourceAsStream(resourceFilePathAndName),
           dataClazz);
-    } catch (IOException e) {
+    } catch (JacksonException e) {
       throw new RuntimeException(e);
     }
   }
 
-  private static ObjectMapper generateObjectMapper() {
-    ObjectMapper mapper = new ObjectMapper();
-    mapper.findAndRegisterModules();
-    return mapper;
+  private static JsonMapper generateJsonMapper() {
+    return JsonMapper.builder().build();
   }
 
   public static <CLASS> List<CLASS> readCsvData(
@@ -73,7 +72,7 @@ public class JMipUtils {
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
       writer.write(
-          generateObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(object)
+          generateJsonMapper().writerWithDefaultPrettyPrinter().writeValueAsString(object)
       );
       writer.close();
     } catch (IOException e) {
