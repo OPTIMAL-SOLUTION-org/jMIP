@@ -45,7 +45,7 @@
     </scm>
 
     <properties>
-        <revision>2.x.x-SNAPSHOT</revision>
+        <revision>2.2.0</revision>
 
         <java.version>17</java.version>
 
