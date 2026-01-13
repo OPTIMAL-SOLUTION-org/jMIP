@@ -47,7 +47,7 @@
     <properties>
         <revision>2.x.x-SNAPSHOT</revision>
 
-        <java.version>11</java.version>
+        <java.version>17</java.version>
 
         <ortools-version>9.15.6755</ortools-version>
         <jackson-version>2.19.1</jackson-version>

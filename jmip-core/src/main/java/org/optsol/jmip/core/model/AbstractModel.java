@@ -16,7 +16,7 @@ public abstract class AbstractModel<SOLVER, VARCLASS, CONSTANTS extends IConstan
   private SOLVER solver;
   private IVariable<? super CONSTANTS, SOLVER, VARCLASS> variables;
   private IObjective<? super CONSTANTS, VARCLASS, SOLVER> objective;
-  private Set<IConstraint<? super CONSTANTS, VARCLASS, SOLVER>> constraints = new HashSet<>();
+  private final Set<IConstraint<? super CONSTANTS, VARCLASS, SOLVER>> constraints = new HashSet<>();
 
 
   @Override

@@ -1,7 +1,11 @@
 package org.optsol.jmip.core.model;
 
 import java.time.Duration;
+import java.util.Set;
 import org.optsol.jmip.core.model.constants.IConstants;
+import org.optsol.jmip.core.model.constraints.IConstraint;
+import org.optsol.jmip.core.model.objective.IObjective;
+import org.optsol.jmip.core.model.variables.IVariable;
 import org.optsol.jmip.core.solver.solution.SolutionState;
 
 public interface IModel<SOLVER, VARCLASS, CONSTANTS extends IConstants> {
@@ -19,10 +23,10 @@ public interface IModel<SOLVER, VARCLASS, CONSTANTS extends IConstants> {
 
   SOLVER getSolver();
 
-  org.optsol.jmip.core.model.variables.IVariable<? super CONSTANTS, SOLVER, VARCLASS> getVariables();
+  IVariable<? super CONSTANTS, SOLVER, VARCLASS> getVariables();
 
-  org.optsol.jmip.core.model.objective.IObjective<? super CONSTANTS, VARCLASS, SOLVER> getObjective();
+  IObjective<? super CONSTANTS, VARCLASS, SOLVER> getObjective();
 
-  java.util.Set<org.optsol.jmip.core.model.constraints.IConstraint<? super CONSTANTS, VARCLASS,
-      SOLVER>> getConstraints();
+  Set<IConstraint<? super CONSTANTS, VARCLASS,
+        SOLVER>> getConstraints();
 }
