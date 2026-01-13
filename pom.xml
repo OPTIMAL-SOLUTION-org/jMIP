@@ -74,6 +74,24 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.optsol.jmip</groupId>
+                <artifactId>jmip-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.optsol.jmip</groupId>
+                <artifactId>jmip-ortools-linearsolver</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.optsol.jmip</groupId>
+                <artifactId>jmip-utils</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.google.ortools</groupId>
                 <artifactId>ortools-java</artifactId>
                 <version>${ortools-version}</version>
