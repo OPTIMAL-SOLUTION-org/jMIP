@@ -49,7 +49,7 @@
 
         <java.version>11</java.version>
 
-        <ortools-version>9.14.6206</ortools-version>
+        <ortools-version>9.15.6755</ortools-version>
         <jackson-version>2.19.1</jackson-version>
         <junit-version>5.13.1</junit-version>
         <junit-platform-version>1.13.1</junit-platform-version>
@@ -73,6 +73,24 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.optsol.jmip</groupId>
+                <artifactId>jmip-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.optsol.jmip</groupId>
+                <artifactId>jmip-ortools-linearsolver</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.optsol.jmip</groupId>
+                <artifactId>jmip-utils</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.google.ortools</groupId>
                 <artifactId>ortools-java</artifactId>
