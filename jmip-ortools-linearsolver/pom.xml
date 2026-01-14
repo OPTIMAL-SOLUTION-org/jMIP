@@ -18,7 +18,6 @@
         <dependency>
             <groupId>org.optsol.jmip</groupId>
             <artifactId>jmip-core</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- External dependencies -->

@@ -45,16 +45,15 @@
     </scm>
 
     <properties>
-        <revision>2.1.1</revision>
+        <revision>2.2.0</revision>
 
-        <java.version>11</java.version>
+        <java.version>17</java.version>
 
-        <ortools-version>9.14.6206</ortools-version>
-        <jackson-version>2.19.1</jackson-version>
-        <junit-version>5.13.1</junit-version>
-        <junit-platform-version>1.13.1</junit-platform-version>
-        <lombok-version>1.18.38</lombok-version>
-        <opencsv-version>5.11.1</opencsv-version>
+        <ortools-version>9.15.6755</ortools-version>
+        <jackson-version>3.0.3</jackson-version>
+        <junit-version>6.0.2</junit-version>
+        <lombok-version>1.18.42</lombok-version>
+        <opencsv-version>5.12.0</opencsv-version>
         <slf4j-version>2.0.17</slf4j-version>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -74,26 +73,38 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.optsol.jmip</groupId>
+                <artifactId>jmip-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.optsol.jmip</groupId>
+                <artifactId>jmip-ortools-linearsolver</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.optsol.jmip</groupId>
+                <artifactId>jmip-utils</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.google.ortools</groupId>
                 <artifactId>ortools-java</artifactId>
                 <version>${ortools-version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
+                <groupId>tools.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
                 <version>${jackson-version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
+                <groupId>tools.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>${jackson-version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.fasterxml.jackson.datatype</groupId>
-                <artifactId>jackson-datatype-jsr310</artifactId>
                 <version>${jackson-version}</version>
             </dependency>
 
@@ -103,12 +114,6 @@
                 <version>${junit-version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.junit.platform</groupId>
-                <artifactId>junit-platform-suite</artifactId>
-                <version>${junit-platform-version}</version>
             </dependency>
 
             <dependency>
@@ -163,7 +168,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.0</version>
+                <version>3.14.1</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
@@ -178,7 +183,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>1.7.0</version>
+                <version>1.7.3</version>
                 <configuration>
                     <updatePomFile>true</updatePomFile>
                     <flattenMode>resolveCiFriendliesOnly</flattenMode>
@@ -204,7 +209,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>3.4.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -219,7 +224,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.11.2</version>
+                <version>3.12.0</version>
                 <configuration>
                     <doclint>all,-missing</doclint>
                 </configuration>
@@ -237,7 +242,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.2.7</version>
+                <version>3.2.8</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -252,7 +257,7 @@
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.8.0</version>
+                <version>0.10.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
