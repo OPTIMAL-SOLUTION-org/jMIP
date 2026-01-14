@@ -1,7 +1,7 @@
 # jMIP - Mixed Integer Programming (MIP) for Java
 
 ![Maven Central Version](https://img.shields.io/maven-central/v/org.optsol.jmip/jmip-core)
-![](https://img.shields.io/badge/java--version-11-blue.svg)
+![](https://img.shields.io/badge/java--version-17-blue.svg)
 
 ### What is **_jMIP_** ?
 
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.optsol.jmip</groupId>
             <artifactId>jmip-ortools-linearsolver</artifactId>
-            <version>2.1.1</version>
+            <version>2.2.0</version>
         </dependency>
     </dependencies>
 ```
